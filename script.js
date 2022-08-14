@@ -9,8 +9,8 @@ const savedName = document.querySelector('#input-name');
 const savedLastName = document.querySelector('#input-lastname');
 const savedEmail = document.querySelector('#input-email');
 const savedHouse = document.querySelector('#house');
-const savedFamily = document.querySelector('#botoes');
-const savedSubjects = document.querySelector('#q2');
+const savedFamily = document.querySelector('#q1');
+const savedSubjects = document.querySelectorAll('.subject');
 const savedEvaluation = document.querySelector('#avalia');
 const savedComment = document.querySelector('#textarea');
 const mainForm = document.querySelector('#evaluation-form');
@@ -54,14 +54,13 @@ function choosingFamily() {
 }
 
 function choosingSubjects() {
-  const allSubjects = savedSubjects.children;
   const selectedsSubjects = [];
-  for (let index = 0; index < allSubjects.length; index += 1) {
-    if (allSubjects[index].checked) {
-      selectedsSubjects.push(`${allSubjects[index].value}`);
+  for (let index = 0; index < savedSubjects.length; index += 1) {
+    if (savedSubjects[index].checked) {
+      selectedsSubjects.push(` ${savedSubjects[index].value}`);
     }
   }
-  return `Matérias:${selectedsSubjects}`;
+  return `Matérias: ${selectedsSubjects}`;
 }
 
 function choosingEvaluation() {
@@ -90,7 +89,7 @@ function swapDisplay(fill) {
   const yourComment = document.querySelector('#comments');
   yourComment.innerText = `Observações: ${savedComment.value}`;
   mainForm.classList.toggle('dontShow');
-  secondForm.classList.toggle('show');
+  secondForm.classList.replace('dontShow', 'show');
 }
 
 btnSend.addEventListener('click', swapDisplay);
