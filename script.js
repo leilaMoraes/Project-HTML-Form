@@ -13,7 +13,7 @@ const savedFamily = document.querySelector('#q1');
 const savedSubjects = document.querySelectorAll('.subject');
 const savedEvaluation = document.querySelector('#avalia');
 const savedComment = document.querySelector('#textarea');
-const mainForm = document.querySelector('#evaluation-form');
+const mainForm = document.querySelector('#main');
 const secondForm = document.querySelector('#form-data');
 
 // eslint-disable-next-line func-names
@@ -27,14 +27,15 @@ window.onload = function () {
   }
   btnEntry.addEventListener('click', fillForm);
 
-  function enableButton() {
+  box.addEventListener('change', () => {
     if (box.checked) {
       btnSend.disabled = false;
+      btnSend.classList.add('enable-btn');
     } else {
       btnSend.disabled = true;
+      btnSend.classList.remove('enable-btn');
     }
-  }
-  box.addEventListener('change', enableButton);
+  });
 };
 
 function countingCharacters() {
@@ -60,7 +61,7 @@ function choosingSubjects() {
       selectedsSubjects.push(` ${savedSubjects[index].value}`);
     }
   }
-  return `Matérias: ${selectedsSubjects}`;
+  return `Matérias:${selectedsSubjects}`;
 }
 
 function choosingEvaluation() {
